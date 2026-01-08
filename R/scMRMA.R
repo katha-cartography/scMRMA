@@ -30,7 +30,7 @@ scMRMA <- function(input,species,db="panglaodb",p=0.05,
     scdata <- counts(input)
   }else if(is(input,"Seurat")){
     if (!require("Seurat",character.only = TRUE)) { stop("Please install Seurat")}
-    scdata <- Seurat::GetAssayData(input,slot="counts")
+    scdata <- Seurat::GetAssayData(input,layer="counts")
   }else if(is(input,"dgCMatrix")){
     scdata <- input
   }else if(is(input, "matrix")){
@@ -75,7 +75,7 @@ scMRMA <- function(input,species,db="panglaodb",p=0.05,
       logcounts <- counts(normalizedData)
     }else if(is(normalizedData,"Seurat")){
       if (!require("Seurat",character.only = TRUE)) { stop("Please install Seurat")}
-      logcounts <- Seurat::GetAssayData(normalizedData,slot="counts")
+      logcounts <- Seurat::GetAssayData(normalizedData,layer="counts")
     }else if(is(normalizedData,"dgCMatrix")){
       logcounts <- normalizedData
     }else if(is(normalizedData, "matrix")){
